@@ -1,6 +1,6 @@
 # GNOME Gnuplot PlotBox
 
-Mathematical graphing extension for GNOME Shell using gnuplot and Maxima.
+Mathematical graphing extension for GNOME Shell using gnuplot.
 
 ## Requirements
 
@@ -27,6 +27,7 @@ Click the PlotBox icon in the top panel to open the plotting window.
 - **✕ button**: Remove function
 
 **X Range:** Set min/max values for x-axis
+**Y Range:** Set min/max values for y-axis
 
 **Options:**
 - **Title**: Graph title
