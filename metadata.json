@@ -1,0 +1,13 @@
+{
+  "name": "GNOME Gnuplot PlotBox",
+  "description": "Mathematical graphing with gnuplot and Maxima - 2D functions, function analysis, and 3D plots",
+  "uuid": "gnuplot-plotbox@mdoksa76.github.com",
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48"
+  ],
+  "version": 1,
+  "url": "https://github.com/mdoksa76/gnuplot-plotbox"
+}

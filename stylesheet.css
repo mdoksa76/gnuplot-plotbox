@@ -1,0 +1,365 @@
+/* GNOME Gnuplot PlotBox Stylesheet */
+
+/* Main window */
+.plotbox-window {
+    background-color: rgba(30, 30, 30, 0.95);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Header bar */
+.plotbox-header {
+    background-color: rgba(50, 50, 50, 0.9);
+    border-radius: 12px 12px 0 0;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plotbox-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.plotbox-close-button {
+    background-color: rgba(255, 59, 48, 0.8);
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    min-width: 32px;
+}
+
+.plotbox-close-button:hover {
+    background-color: rgba(255, 59, 48, 1);
+}
+
+/* Tab bar */
+.plotbox-tabbar {
+    background-color: rgba(40, 40, 40, 0.9);
+    padding: 8px;
+    spacing: 4px;
+}
+
+.plotbox-tab {
+    background-color: rgba(60, 60, 60, 0.6);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.plotbox-tab:hover {
+    background-color: rgba(80, 80, 80, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.plotbox-tab-active {
+    background-color: rgba(52, 120, 246, 0.9);
+    color: #ffffff;
+    border: 1px solid rgba(52, 120, 246, 1);
+    font-weight: bold;
+}
+
+/* Content area */
+.plotbox-content {
+    padding: 16px;
+    spacing: 12px;
+}
+
+/* Input box */
+.plotbox-input-box {
+    spacing: 8px;
+    padding: 8px;
+    background-color: rgba(50, 50, 50, 0.5);
+    border-radius: 8px;
+}
+
+.plotbox-add-button {
+    background-color: rgba(52, 199, 89, 0.9);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    min-width: 48px;
+}
+
+.plotbox-add-button:hover {
+    background-color: rgba(52, 199, 89, 1);
+    box-shadow: 0 2px 8px rgba(52, 199, 89, 0.4);
+}
+
+/* Examples cycling button - NEW */
+.plotbox-example-button {
+    background-color: rgba(255, 149, 0, 0.9);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    border: none;
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.plotbox-example-button:hover {
+    background-color: rgba(255, 149, 0, 1);
+    box-shadow: 0 2px 8px rgba(255, 149, 0, 0.4);
+}
+
+.plotbox-entry {
+    background-color: rgba(70, 70, 70, 0.8);
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plotbox-entry:focus {
+    background-color: rgba(80, 80, 80, 0.9);
+    border: 1px solid rgba(52, 120, 246, 0.8);
+    box-shadow: 0 0 8px rgba(52, 120, 246, 0.3);
+}
+
+/* Lists */
+.plotbox-list-scroll {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background-color: rgba(50, 50, 50, 0.3);
+    padding: 4px;
+    height: 135px;  /* Fixed height for ~4 visible functions */
+}
+
+.plotbox-list {
+    spacing: 6px;
+    padding: 4px;
+}
+
+.plotbox-function-item {
+    background-color: rgba(60, 60, 60, 0.6);
+    border-radius: 6px;
+    padding: 6px 10px;
+    spacing: 8px;
+}
+
+.plotbox-function-item:hover {
+    background-color: rgba(70, 70, 70, 0.8);
+}
+
+.plotbox-list StLabel {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+}
+
+.plotbox-check-button {
+    background-color: transparent;
+    color: rgba(52, 120, 246, 1);
+    border: 1px solid rgba(52, 120, 246, 0.5);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 16px;
+    min-width: 32px;
+}
+
+.plotbox-check-button:hover {
+    background-color: rgba(52, 120, 246, 0.2);
+    border-color: rgba(52, 120, 246, 0.8);
+}
+
+.plotbox-color-indicator {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.plotbox-remove-button {
+    background-color: rgba(255, 59, 48, 0.7);
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 14px;
+    border: none;
+    min-width: 24px;
+}
+
+.plotbox-remove-button:hover {
+    background-color: rgba(255, 59, 48, 1);
+}
+
+/* Range inputs */
+.plotbox-range-box {
+    spacing: 8px;
+    padding: 8px;
+    background-color: rgba(50, 50, 50, 0.3);
+    border-radius: 6px;
+}
+
+.plotbox-range-row {
+    spacing: 8px;
+    padding: 4px;
+}
+
+.plotbox-range-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    min-width: 80px;
+    font-weight: bold;
+}
+
+.plotbox-range-entry {
+    background-color: rgba(70, 70, 70, 0.8);
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plotbox-range-entry:focus {
+    background-color: rgba(80, 80, 80, 0.9);
+    border: 1px solid rgba(52, 120, 246, 0.8);
+}
+
+.plotbox-range-separator {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    padding: 0 4px;
+    font-weight: bold;
+}
+
+/* Options */
+.plotbox-options-box {
+    spacing: 12px;
+    padding: 8px;
+    background-color: rgba(50, 50, 50, 0.3);
+    border-radius: 6px;
+}
+
+.plotbox-option-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 70px;
+}
+
+.plotbox-option-entry {
+    background-color: rgba(70, 70, 70, 0.8);
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plotbox-option-entry:focus {
+    background-color: rgba(80, 80, 80, 0.9);
+    border: 1px solid rgba(52, 120, 246, 0.8);
+}
+
+.plotbox-grid-button {
+    background-color: rgba(52, 120, 246, 0.9);
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 13px;
+    border: none;
+    font-weight: bold;
+}
+
+.plotbox-grid-button:hover {
+    background-color: rgba(52, 120, 246, 1);
+}
+
+.plotbox-refresh-button {
+    background-color: rgba(52, 199, 89, 0.9);
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 13px;
+    border: none;
+    font-weight: bold;
+}
+
+.plotbox-refresh-button:hover {
+    background-color: rgba(52, 199, 89, 1);
+}
+
+/* Palette button */
+.plotbox-palette-button {
+    background-color: rgba(175, 82, 222, 0.9);
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 6px 16px;
+    font-size: 13px;
+    border: none;
+    font-weight: bold;
+    min-width: 100px;
+}
+
+.plotbox-palette-button:hover {
+    background-color: rgba(175, 82, 222, 1);
+}
+
+/* Section titles */
+.plotbox-section-title {
+    color: rgba(52, 120, 246, 1);
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 0;
+    margin-bottom: 4px;
+}
+
+/* Graph area */
+.plotbox-graph {
+    background-color: rgba(40, 40, 40, 0.8);
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+    width: 600px;
+    height: 400px;
+    min-width: 600px;
+    min-height: 400px;
+    max-width: 600px;
+    max-height: 400px;
+}
+
+/* Button bar */
+.plotbox-buttonbar {
+    background-color: rgba(40, 40, 40, 0.9);
+    border-radius: 12px 12px 12px 12px;
+    padding: 12px 16px;
+    spacing: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plotbox-button {
+    background-color: rgba(52, 120, 246, 0.9);
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+}
+
+.plotbox-button:hover {
+    background-color: rgba(52, 120, 246, 1);
+    box-shadow: 0 2px 8px rgba(52, 120, 246, 0.4);
+}
+
+.plotbox-button:active {
+    background-color: rgba(32, 100, 226, 1);
+}
+
+/* Placeholder for empty tabs */
+.plotbox-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    padding: 50px;
+}
