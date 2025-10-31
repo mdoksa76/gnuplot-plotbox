@@ -11,6 +11,9 @@ class PlotBoxIndicator extends PanelMenu.Button {
     _init(metadata) {
         super._init(0.0, 'PlotBox');
         
+        // Track timeouts for cleanup
+        this._timeoutIds = [];
+        
         // Load custom icon from extension directory
         const iconPath = GLib.build_filenamev([metadata.path, 'icons', 'gnuplot.svg']);
         const iconFile = Gio.File.new_for_path(iconPath);
@@ -89,7 +92,7 @@ class PlotBoxIndicator extends PanelMenu.Button {
         });
         
         let title = new St.Label({
-            text: 'GNOME Gnuplot PlotBox',
+            text: 'Gnuplot PlotBox',
             style_class: 'plotbox-title',
             x_expand: true,
         });
@@ -557,7 +560,7 @@ class PlotBoxIndicator extends PanelMenu.Button {
                 );
             } catch (e) {
                 Main.notify('PlotBox Error', 'Failed to run gnuplot. Is it installed?');
-                log('Error launching gnuplot: ' + e.message);
+                console.error('Error launching gnuplot: ' + e.message);
                 return;
             }
             
@@ -566,20 +569,24 @@ class PlotBoxIndicator extends PanelMenu.Button {
                     proc.wait_finish(res);
                     
                     if (proc.get_successful()) {
-                        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
+                        let timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
                             this._displayGraph('/tmp/plotbox_functions.png', this._graphArea);
+                            // Remove from tracking after execution
+                            const index = this._timeoutIds.indexOf(timeoutId);
+                            if (index > -1) this._timeoutIds.splice(index, 1);
                             return GLib.SOURCE_REMOVE;
                         });
+                        this._timeoutIds.push(timeoutId);
                     } else {
                         Main.notify('PlotBox Error', 'Gnuplot failed. Check your function syntax.');
                     }
                 } catch (e) {
-                    log('Error waiting for gnuplot: ' + e.message);
+                    console.error('Error waiting for gnuplot: ' + e.message);
                 }
             });
             
         } catch (e) {
-            log('Error generating graph: ' + e.message);
+            console.error('Error generating graph: ' + e.message);
         }
     }
     
@@ -598,7 +605,7 @@ class PlotBoxIndicator extends PanelMenu.Button {
             
             targetArea.set_child(image);
         } catch (e) {
-            log('Error displaying graph: ' + e.message);
+            console.error('Error displaying graph: ' + e.message);
         }
     }
     
@@ -685,17 +692,23 @@ class PlotBoxIndicator extends PanelMenu.Button {
                 return;
             }
             
-            let [success, contents] = file.load_contents(null);
-            
-            if (!success) {
-                Main.notify('PlotBox', 'No graph to copy. Generate a graph first.');
-                return;
-            }
-            
-            let clipboard = St.Clipboard.get_default();
-            clipboard.set_content(St.ClipboardType.CLIPBOARD, 'image/png', contents);
-            
-            Main.notify('PlotBox', 'Graph copied to clipboard!');
+            file.load_contents_async(null, (file, res) => {
+                try {
+                    let [success, contents] = file.load_contents_finish(res);
+                    
+                    if (!success) {
+                        Main.notify('PlotBox', 'Failed to load graph file.');
+                        return;
+                    }
+                    
+                    let clipboard = St.Clipboard.get_default();
+                    clipboard.set_content(St.ClipboardType.CLIPBOARD, 'image/png', contents);
+                    
+                    Main.notify('PlotBox', 'Graph copied to clipboard!');
+                } catch (e) {
+                    Main.notify('PlotBox', 'Error copying graph: ' + e.message);
+                }
+            });
         } catch (e) {
             Main.notify('PlotBox', 'Error copying graph');
         }
@@ -1108,7 +1121,7 @@ class PlotBoxIndicator extends PanelMenu.Button {
                 );
             } catch (e) {
                 Main.notify('PlotBox Error', 'Failed to run gnuplot. Is it installed?');
-                log('Error launching gnuplot: ' + e.message);
+                console.error('Error launching gnuplot: ' + e.message);
                 return;
             }
             
@@ -1117,20 +1130,24 @@ class PlotBoxIndicator extends PanelMenu.Button {
                     proc.wait_finish(res);
                     
                     if (proc.get_successful()) {
-                        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
+                        let timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
                             this._display3DGraph('/tmp/plotbox_3d.png', this._graph3dArea);
+                            // Remove from tracking after execution
+                            const index = this._timeoutIds.indexOf(timeoutId);
+                            if (index > -1) this._timeoutIds.splice(index, 1);
                             return GLib.SOURCE_REMOVE;
                         });
+                        this._timeoutIds.push(timeoutId);
                     } else {
                         Main.notify('PlotBox Error', 'Gnuplot failed. Check your function syntax.');
                     }
                 } catch (e) {
-                    log('Error waiting for gnuplot: ' + e.message);
+                    console.error('Error waiting for gnuplot: ' + e.message);
                 }
             });
             
         } catch (e) {
-            log('Error generating 3D graph: ' + e.message);
+            console.error('Error generating 3D graph: ' + e.message);
         }
     }
     
@@ -1149,12 +1166,20 @@ class PlotBoxIndicator extends PanelMenu.Button {
             
             targetArea.set_child(image);
         } catch (e) {
-            log('Error displaying 3D graph: ' + e.message);
+            console.error('Error displaying 3D graph: ' + e.message);
         }
     }
     
 
     destroy() {
+        // Clean up all pending timeouts
+        if (this._timeoutIds) {
+            this._timeoutIds.forEach(id => {
+                if (id) GLib.Source.remove(id);
+            });
+            this._timeoutIds = [];
+        }
+        
         if (this._plotWindow) {
             this._plotWindow.destroy();
             this._plotWindow = null;

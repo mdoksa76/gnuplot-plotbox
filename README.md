@@ -1,4 +1,4 @@
-# GNOME Gnuplot PlotBox
+# Gnuplot PlotBox
 
 Mathematical graphing extension for GNOME Shell using gnuplot.
 
@@ -14,32 +14,31 @@ sudo pacman -S gnuplot                # Arch
 
 Click the PlotBox icon in the top panel to open the plotting window.
 
-### 📊 2D Functions Tab
+### 2D Functions Tab
 
 **Input area:**
 - **Text field**: Enter function (e.g., `sin(x)`, `x**2`, `2*x+3`)
-- **📚 Example button**: Cycle through example functions
+- **Example button**: Cycle through example functions
 - **+ button**: Add function to list
 
 **Function list:**
-- **✓ checkbox**: Show/hide function on graph
+- **Checkbox**: Show/hide function on graph
 - **Color box**: Function color indicator
-- **✕ button**: Remove function
+- **X button**: Remove function
 
 **X Range:** Set min/max values for x-axis
-**Y Range:** Set min/max values for y-axis
 
 **Options:**
 - **Title**: Graph title
 - **X/Y Labels**: Axis labels
-- **☑ Grid**: Toggle grid lines
-- **🔄 Refresh**: Redraw graph
+- **Grid button**: Toggle grid lines
+- **Refresh button**: Redraw graph
 
-### 🎲 3D Functions Tab
+### 3D Functions Tab
 
 **Input area:**
 - **Text field**: Enter 3D function (e.g., `sin(sqrt(x**2+y**2))`)
-- **📚 Example button**: Cycle through 3D examples
+- **Example button**: Cycle through 3D examples
 - **+ button**: Plot function (replaces previous)
 
 **Ranges:** Set X, Y, Z axis ranges
@@ -51,8 +50,8 @@ Click the PlotBox icon in the top panel to open the plotting window.
 **Labels:** Set X, Y, Z axis labels
 
 **Controls:**
-- **☑ Grid**: Toggle grid
-- **🔄 Refresh**: Redraw graph
+- **Grid button**: Toggle grid
+- **Refresh button**: Redraw graph
 
 ### Bottom buttons
 
